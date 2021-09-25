@@ -1,6 +1,10 @@
 # Creating a hash map class that will store the package objects
+import package
+
+
 class HashTable:
     def __init__(self):
+        self.map = None
         self.table_size = 40
         self.table = [None] * self.table_size
 

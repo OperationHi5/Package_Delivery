@@ -1,8 +1,11 @@
+from format_time import *
+
+
 def package_lookup(selected_package, selected_time):
-    statement = '\nID: ' + str(selected_package.id) + ' Address: ' + str(selected_package.address) + \
-                ' City: ' + str(selected_package.city) + ' Postal Code: ' + str(selected_package.postal_code) + \
-                ' Delivery Deadline: ' + str(format_minutes(selected_package.deadline)) + \
-                ' Weight: ' + str(selected_package.weight) + ' Status: '
+    statement = '\nID: ' + selected_package.package_id + ' Address: ' + selected_package.address + \
+                ' City: ' + selected_package.city + ' Postal Code: ' + selected_package.zipcode + \
+                ' Delivery Deadline: ' + format_minutes(selected_package.deadline) + \
+                ' Weight: ' + selected_package.weight + ' Status: '
     if selected_package is not None:
         if selected_time < selected_package.departure_time:
 

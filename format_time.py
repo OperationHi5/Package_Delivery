@@ -1,7 +1,7 @@
 def format_minutes(time):
-    time_hours = int(time/60)
-    time_minutes = time % 60
-    if time < 720:
+    time_hours = int(time) / 60
+    time_minutes = int(time) % 60
+    if int(time) < 720:
         am_pm = "AM"
         time_formatted = "%d:%02d" % (time_hours, time_minutes)
     else:
@@ -11,6 +11,7 @@ def format_minutes(time):
 
 
 def convert_to_minutes(time):
+    # print(time)
     parsed = time.split(':')
     hours = parsed[0]
     parsed2 = parsed[1].split(' ')

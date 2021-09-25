@@ -9,7 +9,9 @@ class Package:
         self.deadline = deadline
         self.weight = weight
         self.notes = notes
-        self.hub_time = None
-        self.delivery_time = None
-        self.departure_time = None
+        self.hub_time = 0
+        self.transport_time = 0
+        self.delivery_time = 0
+        self.departure_time = 0
         self.truck_id = 0
+        self.status = ' '

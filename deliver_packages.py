@@ -1,3 +1,4 @@
+from format_time import *
 from hashtable import *
 from package_reader import *
 from distance_reader import *
@@ -20,23 +21,23 @@ def deliver_packages():
 
     hub_address = "4001 South 700 East"
 
-    update_time(package_table, truck1_list, time(8, 0))
-    update_time(package_table, truck2_list, time(8, 0))
-    update_time(package_table, truck3_list, time(8, 0))
-    update_time(package_table, delayed_packages, time(9, 5))
+    update_time(package_table, truck1_list, 480)
+    update_time(package_table, truck2_list, 480)
+    update_time(package_table, truck3_list, 480)
+    update_time(package_table, delayed_packages, 570)
 
     truck1_list = delivery_algo(truck1_list)
 
-    truck1 = Truck(1, time(8, 0), truck1_list)
+    truck1 = Truck(1, 480, truck1_list)
 
     truck1.current_location = hub_address
 
     print("------")
     print("Truck Schedule: ")
     print("------")
-    print("Truck one leaves hub at", truck1.time)
+    print("Truck 1 leaves hub at", format_minutes(truck1.time))
 
-    update_transport_time(package_table, truck1_list, time(8, 0))
+    update_transport_time(package_table, truck1_list, 480)
 
     while truck1.package_list:
         package = package_table.get(truck1.package_list[0])
@@ -46,6 +47,7 @@ def deliver_packages():
         truck1.time = add_time(miles_to_time(distance_to_next), truck1.time)
         package.delivery_time = truck1.time
         package.truck_id = truck1.truck_id
+        package.status = 'Delivered'
         package_table.set(int(package.package_id), package)
         truck1.package_list.pop(0)
         if not truck1.package_list:
@@ -54,16 +56,16 @@ def deliver_packages():
 
     truck1.return_time = truck1.time
 
-    print("Truck 1 Returns at: ", truck1.return_time)
+    print("Truck 1 Returns at: ", format_minutes(truck1.return_time))
 
     truck2_list = delivery_algo(truck2_list)
 
-    truck2 = Truck(2, time(8, 0), truck2_list)
+    truck2 = Truck(2, 480, truck2_list)
 
     truck2.current_location = hub_address
 
-    print("Truck 2 leaves hub at", truck2.time)
-    update_transport_time(package_table, truck2_list, time(8, 0))
+    print("Truck 2 leaves hub at", format_minutes(truck2.time))
+    update_transport_time(package_table, truck2_list, 480)
 
     while truck2.package_list:
         package = package_table.get(truck2.package_list[0])
@@ -71,9 +73,9 @@ def deliver_packages():
         truck2.miles += float(distance_to_next)
         truck2.current_location = package.address
         truck2.time = add_time(miles_to_time(distance_to_next), truck2.time)
-
         package.delivery_time = truck2.time
         package.truck_id = truck2.truck_id
+        package.status = 'Delivered'
         package_table.set(int(package.package_id), package)
         truck2.package_list.pop(0)
         if not truck2.package_list:
@@ -81,15 +83,15 @@ def deliver_packages():
             truck2.current_location = hub_address
 
     truck2.return_time = truck2.time
-    print("Truck 1 Returns at: ", truck2.return_time)
+    print("Truck 1 Returns at: ", format_minutes(truck2.return_time))
 
     truck3_list = delivery_algo(truck3_list)
     truck3 = Truck(3, truck1.return_time, truck3_list)
     truck3.current_location = hub_address
 
-    print("Truck 3 leaves hub at", truck3.time)
+    print("Truck 3 leaves hub at", format_minutes(truck2.return_time))
 
-    update_transport_time(package_table, truck3_list, time(9, 5))
+    update_transport_time(package_table, truck3_list, 570)
 
     while truck3.package_list:
         package = package_table.get(truck3.package_list[0])
@@ -99,6 +101,7 @@ def deliver_packages():
         truck3.time = add_time(miles_to_time(distance_to_next), truck3.time)
         package.delivery_time = truck3.time
         package.truck_id = truck3.truck_id
+        package.status = 'Delivered'
         package_table.set(int(package.package_id), package)
         truck3.package_list.pop(0)
         if not truck3.package_list:
@@ -106,17 +109,17 @@ def deliver_packages():
             truck3.current_location = hub_address
 
     truck3.return_time = truck3.time
-    print("Truck 3 returns at:", truck3.return_time)
+    print("Truck 3 returns at:", format_minutes(truck3.return_time))
 
     truck1_list = [11, 22, 23, 24]
     truck1_list = delivery_algo(truck1_list)
     truck1.package_list = truck1_list
     truck1.current_location = hub_address
     truck1.time = truck2.return_time
-    print("Truck 1 leaves hub again at", truck1.time)
+    print("Truck 1 leaves hub again at", format_minutes(truck1.time))
 
-    update_time(package_table, truck1_list, time(8, 0))
-    update_transport_time(package_table, truck1_list, truck2.return_time)
+    update_time(package_table, truck1_list, 480)
+    update_transport_time(package_table, truck1_list, format_minutes(truck2.return_time))
 
     while truck1.package_list:
         package = package_table.get(truck1.package_list[0])
@@ -126,6 +129,7 @@ def deliver_packages():
         truck1.time = add_time(miles_to_time(distance_to_next), truck1.time)
         package.delivery_time = truck1.time
         package.truck_id = truck1.truck_id
+        package.status = 'Delivered'
         package_table.set(int(package.package_id), package)
         truck1.package_list.pop(0)
         if not truck1.package_list:
@@ -133,7 +137,7 @@ def deliver_packages():
             truck1.current_location = hub_address
 
     truck1.return_time = truck1.time
-    print("Truck 1 returns again at:", truck1.return_time)
+    print("Truck 1 returns again at:", format_minutes(truck1.return_time))
 
     truck2_list = [5, 8, 9, 10, 17, 2, 33, 39, 27, 35]
     truck2_list = delivery_algo(truck2_list)
@@ -142,10 +146,10 @@ def deliver_packages():
     truck2.current_location = hub_address
     truck2.time = truck3.return_time
 
-    print("Truck 2 leaves hub again at", truck2.time)
+    print("Truck 2 leaves hub again at", format_minutes(truck2.time))
 
-    update_time(package_table, truck2_list, time(8, 0))
-    update_transport_time(package_table, truck2_list, truck3.return_time)
+    update_time(package_table, truck2_list, 480)
+    update_transport_time(package_table, truck2_list, format_minutes(truck3.return_time))
 
     while truck2.package_list:
         package = package_table.get(truck2.package_list[0])
@@ -155,6 +159,7 @@ def deliver_packages():
         truck2.time = add_time(miles_to_time(distance_to_next), truck2.time)
         package.delivery_time = truck2.time
         package.truck_id = truck2.truck_id
+        package.status = 'Delivered'
         package_table.set(int(package.package_id), package)
         truck2.package_list.pop(0)
         if not truck2.package_list:
@@ -162,7 +167,7 @@ def deliver_packages():
             truck2.current_location = hub_address
 
     truck2.return_time = truck2.time
-    print("Truck 2 returns again at:", truck2.return_time)
+    print("Truck 2 returns again at:", format_minutes(truck2.return_time))
 
     all_mileage = truck1.miles + truck2.miles + truck3.miles
     print("------")
@@ -208,11 +213,10 @@ def miles_to_time(miles):
 
 
 def add_time(minutes_to_add, prev_time):
-
-    temp_date = date.today()
-    converted_prev_time = datetime.combine(temp_date, prev_time)
-
-    updated_time = (converted_prev_time + timedelta(minutes=minutes_to_add)).time()
+    # print(minutes_to_add)
+    # print(prev_time)
+    updated_time = minutes_to_add + int(prev_time)
+    # print(updated_time)
     return updated_time
 
 

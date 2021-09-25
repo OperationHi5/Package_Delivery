@@ -2,36 +2,17 @@
 
 import csv
 import re
+
+import hashtable
+import package
 from deliver_packages import *
-from hashtable import *
+from package_lookup import *
+from format_time import *
 from package import *
 from distance_reader import *
 from truck import *
 from datetime import *
 
-
-# def package_lookup(selected_package, selected_time):
-#     statement = '\nID: ' + str(selected_package.id) + ' Address: ' + str(selected_package.address) + \
-#                 ' City: ' + str(selected_package.city) + ' Postal Code: ' + str(selected_package.postal_code) + \
-#                 ' Delivery Deadline: ' + str(format_minutes(selected_package.deadline)) + \
-#                 ' Weight: ' + str(selected_package.weight) + ' Status: '
-#     if selected_package is not None:
-#         if selected_time < selected_package.departure_time:
-#
-#             statement1 = statement + 'At Hub'
-#
-#             return statement1
-#
-#         elif selected_package.delivery_time > selected_time > selected_package.departure_time:
-#
-#             statement2 = statement + 'En Route'
-#
-#             return statement2
-#
-#         elif selected_time >= selected_package.delivery_time:
-#             statement3 = statement + selected_package.status + ' At ' + format_minutes(selected_package.delivery_time)
-#
-#             return statement3
 
 class Main:
 
@@ -42,30 +23,27 @@ class Main:
 
         if input1 == '1':
             deliver_packages()
-        # elif input1 == '2':
-        #     while True:
-        #         package_id = int(input("\nPlease enter the ID (1-40) of the Package you would like to look up"
-        #                                "or Enter '0' to Exit: \n"))
-        #         selected_package = hashtable.get(int(package_id))
-        #
-        #         if package_id == 0:
-        #             print("\nExiting Lookup\n")
-        #             break
-        #
-        #         elif selected_package is not None:
-        #             while True:
-        #                 status_time = input("Please Enter the Time You Would Like The Status At: "
-        #                                     "(Example: 10:00 AM or 3:00 PM) \n")
-        #                 format_check = re.match("[0-9][0-9]:[0-9][0-9] [A-Z][A-Z]", status_time)
-        #                 if bool(format_check):
-        #                     status_time = time_to_minutes(status_time)
-        #                     print(package_lookup(selected_package, status_time))
-        #                     break
-        #                 else:
-        #                     print("Please Enter Time in the Correct Format (HH:MM AM)")
-        #
-        #         else:
-        #             print('Please select a valid package ID...\n')
+        elif input1 == '2':
+            while True:
+                all_packages = deliver_packages()
+                package_id = int(input("\nPlease enter the ID (1-40) of the Package you would like to look up"
+                                       "or Enter '0' to Exit: \n"))
+                if package_id < 1 or package_id > 40:
+                    print("\nPlease Select a Valid Package ID\n")
+                    break
+                else:
+                    selected_package = all_packages.get(package_id)
+                    while True:
+                        status_time = input("Please Enter the Time You Would Like The Status At: "
+                                            "(Example: 10:00 AM or 3:00 PM) \n")
+                        format_check = re.match("[0-9][0-9]:[0-9][0-9] [A-Z][A-Z]", status_time)
+                        if bool(format_check):
+                            status_time = convert_to_minutes(status_time)
+                            print(package_lookup(selected_package, status_time))
+                            break
+                        else:
+                            print("Please Enter Time in the Correct Format (HH:MM AM)")
+
         #
         # elif input1 == '3':
         #     status1 = 540
