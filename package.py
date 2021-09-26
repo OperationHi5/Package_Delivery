@@ -1,5 +1,12 @@
-# creating a package class that will create package objects
 class Package:
+    """
+    Package class allows the creation of package objects. Stores all of the relevant information of the package
+    so that packages can be loaded into trucks and delivered, with attributes that can be updated throughout
+    the process of delivery. Package objects hold data that is pulled from the packages.csv file. After the
+    object is created it is added to a hash table for easy/quick access.
+    """
+
+    # Sets the init method so that package objects can be created and hold package data
     def __init__(self, package_id, address, city, state, zipcode, deadline, weight, notes):
         self.package_id = package_id
         self.address = address
