@@ -13,8 +13,6 @@ def deliver_packages():
 
     truck2_list = [2, 3, 6, 18, 25, 26, 27, 28, 32, 36, 38]
 
-    # delayed_packages = [6, 25, 28, 32]
-
     truck3_list = [4, 5, 7, 8, 9, 10, 11, 12, 17, 21, 22, 23, 24, 33, 35, 39]
 
     hub_address = "4001 South 700 East"
@@ -22,7 +20,6 @@ def deliver_packages():
     update_time(package_table, truck1_list, 480)
     update_time(package_table, truck2_list, 480)
     update_time(package_table, truck3_list, 480)
-    # update_time(package_table, delayed_packages, 570)
 
     truck1_list = delivery_algo(truck1_list)
 
