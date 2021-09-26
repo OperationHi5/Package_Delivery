@@ -1,17 +1,9 @@
 #  Jacob Clingler - Student ID: 000968521
 
-import csv
 import re
 
-import hashtable
-import package
 from deliver_packages import *
 from package_lookup import *
-from format_time import *
-from package import *
-from distance_reader import *
-from truck import *
-from datetime import *
 
 
 class Main:

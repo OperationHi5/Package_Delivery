@@ -1,9 +1,7 @@
-from format_time import *
-from hashtable import *
-from package_reader import *
 from distance_reader import *
+from format_time import *
+from package_reader import *
 from truck import *
-from datetime import *
 
 
 def deliver_packages():
@@ -83,7 +81,7 @@ def deliver_packages():
             truck2.current_location = hub_address
 
     truck2.return_time = truck2.time
-    print("Truck 1 Returns at: ", format_minutes(truck2.return_time))
+    print("Truck 2 Returns at: ", format_minutes(truck2.return_time))
 
     truck3_list = delivery_algo(truck3_list)
     truck3 = Truck(3, truck1.return_time, truck3_list)
@@ -148,8 +146,8 @@ def deliver_packages():
 
     print("Truck 2 leaves hub again at", format_minutes(truck2.time))
 
-    update_time(package_table, truck2_list, 480)
-    update_transport_time(package_table, truck2_list, format_minutes(truck3.return_time))
+    update_time(package_table, truck2_list, truck2.time)
+    update_transport_time(package_table, truck2_list, format_minutes(truck2.time))
 
     while truck2.package_list:
         package = package_table.get(truck2.package_list[0])
@@ -174,6 +172,7 @@ def deliver_packages():
     print("Total Mileage for deliveries:", round(all_mileage, 2))
     print("------")
     print("All Packages Delivered")
+    print("------")
 
     return package_table
 

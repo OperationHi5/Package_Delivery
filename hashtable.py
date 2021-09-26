@@ -61,7 +61,6 @@ class HashTable:
                 return True
 
     def print_hash_table(self):
-
         print("_________HASH TABLE_________")
         for entry in self.table:
             if entry is not None:

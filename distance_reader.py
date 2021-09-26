@@ -17,7 +17,5 @@ def distance_reader():
                 temp[street_list[i]] = float(row[i])
             all_distances[row[0]] = temp
 
-            print(row)
-
         return all_distances
 
