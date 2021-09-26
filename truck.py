@@ -4,6 +4,7 @@ class Truck:
         self.truck_id = truck_id
         self.package_list = package_list
         self.time = time
+        self.departure_time = 0
         self.return_time = None
         self.miles = 0.0
         self.current_location = ""

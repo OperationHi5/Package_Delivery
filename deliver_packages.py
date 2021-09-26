@@ -124,7 +124,7 @@ def update_transport_time(hash_table, truck_list, transport_time, status):
 
     for package_id in truck_list:
         package = hash_table.get(package_id)
-        package.transport_time = transport_time
+        package.departure_time = transport_time
         package.status = status
         hash_table.set(package_id, package)
 

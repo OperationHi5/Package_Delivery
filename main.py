@@ -37,23 +37,20 @@ class Main:
                             print("Please Enter Time in the Correct Format (HH:MM AM)")
 
         elif input1 == '3':
-            status1 = 540
-            status2 = 600
-            status3 = 780
-            print('\n---------\n')
-            print('All Package Status at ' + format_minutes(status1) + '\n')
-            for i in range(1, 41):
-                print(package_lookup(hashtable.get(i), status1))
+            print("At What Time Would You Like To Check The Status of All Packages?")
+            status_time = input("\n 1. 9:00 AM \n 2. 10:00 AM \n 3. 1:00 PM \n Select An Option: ")
+            if status_time != 1 or status_time != 2 or status_time != 3:
+                print("Please Select a Valid Option")
 
-            print('\n---------\n')
-            print('All Package Status at ' + format_minutes(status3) + '\n')
-            for i in range(1, 41):
-                print(package_lookup(hashtable.get(i), status2))
-
-            print('\n---------\n')
-            print('All Package Status at ' + format_minutes(status3) + '\n')
-            for i in range(1, 41):
-                print(package_lookup(hashtable.get(i), status3))
+            if status_time == '1':
+                hashtable = deliver_packages()
+                all_package_search(hashtable, 540)
+            elif status_time == '2':
+                hashtable = deliver_packages()
+                all_package_search(hashtable, 600)
+            elif status_time == '3':
+                hashtable = deliver_packages()
+                all_package_search(hashtable, 780)
 
         elif input1 == '4':
             print('Exiting Program, Goodbye!\n')
