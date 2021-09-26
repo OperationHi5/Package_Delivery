@@ -11,7 +11,7 @@ def deliver_packages():
     package_table hash table, organizes the packages into the proper order, delivers the packages, and then returns
     the hash table so the data can be accessed after being ran
 
-    Algorithmic Complexity: 0(n). Since each element is iterated over, it has the complexity of 0(n). Could
+    Algorithmic Complexity: O(n). Since each element is iterated over, it has the complexity of O(n). Could
     be higher complexity if the hash table needed to be resized or if keys had more than one element associated
     with them.
     """
@@ -165,8 +165,8 @@ def update_transport_time(hash_table, truck_list, transport_time, status):
     it takes the package out of the table and updates when it leaves the hub, updates the status to 'En Route' and
     sets the hash table key to a new value
 
-    Algorithmic Complexity: 0(n). Each item in the truck list is iterated over, and because the hash table doesn't
-    need to resize and each key only has one element associated with it, the complexity stays 0(n).
+    Algorithmic Complexity: O(n). Each item in the truck list is iterated over, and because the hash table doesn't
+    need to resize and each key only has one element associated with it, the complexity stays O(n).
     """
     for package_id in truck_list:
         package = hash_table.get(package_id)
@@ -181,8 +181,8 @@ def update_delivery_time(hash_table, package_id, delivery_time):
     the hash table for the package with that id, and updates the package's delivery time with the inputted delivery
     time.
 
-    Algorithmic Complexity: 0(1). This function in this program will run at 0(1) because there is no resizing
-    of the hash table and each key only has one element associated with it.
+    Algorithmic Complexity: O(1). This function in this program will run at O(1) because it's only updating a single
+    item
     """
     package = hash_table.get(package_id)
     package.delivery_time = delivery_time
@@ -193,6 +193,8 @@ def miles_to_time(miles):
     """
     This function takes the number of miles between locations and converts it into minutes based on the
     speed of the delivery trucks, which is 18 miles per hour.
+
+    Algorithmic Complexity: O(1).
     """
     converted_time = round(float(miles) / 0.3)
     return converted_time
@@ -202,6 +204,8 @@ def add_time(minutes_to_add, prev_time):
     """
     This function takes the amount of time in minutes and adds the minutes of the trip from one location to the
     next to get an accurate representation of where each package is and when it was delivered
+
+    Algorithmic Complexit: O(1).
     """
     updated_time = minutes_to_add + int(prev_time)
     return updated_time

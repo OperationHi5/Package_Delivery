@@ -9,8 +9,8 @@ def package_reader():
     each row of the list and adds each row to the hash table. It returns a hash table that contains
     organized data from the csv file.
 
-    Algorithmic Complexity: 0(n). Loops over n elements in the dictionary, each row is a line from the csv.
-    Each line of code in the loop runs at 0(1) complexity
+    Algorithmic Complexity: O(N). Loops over n elements in the dictionary, each row is a line from the csv.
+    Each line of code in the loop runs at O(1) complexity
     """
 
     # Opens the package csv file so the data can be accessed

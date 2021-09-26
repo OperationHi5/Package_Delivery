@@ -2,7 +2,7 @@ def format_minutes(time):
     """
     This method takes the time in minutes and returns the time formatted in HH:MM AM format for display purposes
 
-    Algorithmic Complexity: 0(1).
+    Algorithmic Complexity: O(1).
     """
     time_hours = int(time) / 60
     time_minutes = int(time) % 60
@@ -20,7 +20,7 @@ def convert_to_minutes(time):
     This method takes the time in HH:MM AM format and turns it into the time in minutes so that
     packages can be searched for without requiring the user to know how many minutes each hour of the day is
 
-    Algorithmic Complexity: 0(1).
+    Algorithmic Complexity: O(1).
     """
     print(time)
     parsed = time.split(':')

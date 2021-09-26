@@ -5,8 +5,8 @@ class HashTable:
     """
     Custom hash table that creates an object and holds that data in a key/value pair.
 
-    Algorithmic Complexity: 0(1). Since the number of objects is known ahead of time and the fact that there
-    will be no need for resizing and no keys being associated with multiple elements, it's only 0(1) complexity.
+    Algorithmic Complexity: O(1). Since the number of objects is known ahead of time and the fact that there
+    will be no need for resizing and no keys being associated with multiple elements, it's only O(1) complexity.
     """
     def __init__(self):
         self.map = None
@@ -23,7 +23,8 @@ class HashTable:
         the bucket if that key does not already exist. The chaining functionality allows the hash table to
         qualify as 'self-adjusting' to fulfill that requirement of this project
 
-        Algorithmic Complexity: 0(1).
+        Algorithmic Complexity: O(1). Since there are no instances of multiple objects being associated to one
+        key, the complexity is O(1).
         """
         hashed_key = self._hash_algo(key)
         hashed_value = [key, value]
@@ -60,7 +61,7 @@ class HashTable:
 
     def delete(self, key):
         # This function removes an entry that matches the given key in the hash table
-        # Algorithmic Complexity: 0(1).
+        # Algorithmic Complexity: O(1).
 
         # Creates a hashed key from the input for they key
         hashed_key = self._hash_algo(key)
@@ -78,7 +79,7 @@ class HashTable:
 
     def print_hash_table(self):
         # This function prints out each entry of the hash table to the CLI
-        # Algorithmic Complexity: 0(n)
+        # Algorithmic Complexity: O(n)
 
         print("_________HASH TABLE_________")
         for entry in self.table:
@@ -91,6 +92,6 @@ class HashTable:
         of the size of the table. This creates a 1 to 1 mapping since it is already known that there will only be
         40 unique keys, so only 40 buckets will need to be created.
 
-        Algorithmic Copmlexity: 0(1).
+        Algorithmic Copmlexity: O(1).
         """
         return key % self.table_size

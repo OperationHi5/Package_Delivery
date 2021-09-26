@@ -8,7 +8,7 @@ def distance_reader():
     through every row in the dictionary and adds that data to another dictionary that combines the distances
     with a list of streets, then returns dictionary with the organized Address:Distance Data
 
-    Algorithmic Complexity: 0(n^2). Each element is iterated over multiple times to create a fully connected graph of
+    Algorithmic Complexity: O(n^2). Each element is iterated over multiple times to create a fully connected graph of
     the data.
     """
     with open('distances.csv') as csv_file:

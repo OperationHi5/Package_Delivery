@@ -12,7 +12,7 @@ class Main:
     Allows the user to run the deliver_packages routine, lookup specific packages at a certain time, and
     show the status of all packages at certain times. Also allows the user to exit the program.
 
-    Algorithmic Complexity: 0(N). Program will iteration through as many options as the user desires and will only
+    Algorithmic Complexity: O(N). Program will iteration through as many options as the user desires and will only
     end when the user quits the program or selects option 4.
     """
     while True:
@@ -22,14 +22,14 @@ class Main:
 
         if input1 == '1':
             # Runs the deliver packages routine and displays the output in the console
-            # Algorithmic Complexity: 0(n^2)
+            # Algorithmic Complexity: O(n^2)
             deliver_packages()
         elif input1 == '2':
             # Allows the user to search for a specific package at a certain time
             while True:
                 # Runs the deliver packages routine and adds the data to a hash table that can
                 # be searched through depending on the user's needs
-                # Algorithmic Complexity: 0(n^2)
+                # Algorithmic Complexity: O(n^2)
                 all_packages = deliver_packages()
                 package_id = int(input("\nPlease enter the ID (1-40) of the Package you would like to look up"
                                        "or Enter '0' to Exit: \n"))
@@ -59,24 +59,24 @@ class Main:
 
             if status_time == '1':
                 # Runs the deliver packages routine so the data can be added to table that can be searched
-                # Algorithmic Complexity: 0(n^2)
+                # Algorithmic Complexity: O(n^2)
                 hashtable = deliver_packages()
                 # Iterates through the table and prints the data for each package at the desired time
-                # Algorithmic Complexity: 0(N)
+                # Algorithmic Complexity: O(N)
                 all_package_search(hashtable, 540)
             elif status_time == '2':
                 # Runs the deliver packages routine so the data can be added to table that can be searched
-                # Algorithmic Complexity: 0(n^2)
+                # Algorithmic Complexity: O(n^2)
                 hashtable = deliver_packages()
                 # Iterates through the table and prints the data for each package at the desired time
-                # Algorithmic Complexity: 0(N)
+                # Algorithmic Complexity: O(N)
                 all_package_search(hashtable, 600)
             elif status_time == '3':
                 # Runs the deliver packages routine so the data can be added to table that can be searched
-                # Algorithmic Complexity: 0(n^2)
+                # Algorithmic Complexity: O(n^2)
                 hashtable = deliver_packages()
                 # Iterates through the table and prints the data for each package at the desired time
-                # Algorithmic Complexity: 0(N)
+                # Algorithmic Complexity: O(N)
                 all_package_search(hashtable, 780)
 
         elif input1 == '4':

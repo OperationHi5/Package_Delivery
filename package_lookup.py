@@ -6,7 +6,8 @@ def package_lookup(selected_package, selected_time):
     This function takes a package and a time as input, and then returns a string that displays
     information of all of the attributes of the package at the designated time.
 
-    Algorithmic Complexity: 0(1).
+    Algorithmic Complexity: O(1). Searching and printing data for a single item in a 1 to 1 mapped hash table is O(1)
+    in complexity
     """
     statement = '\nID: ' + selected_package.package_id + ' Address: ' + selected_package.address + \
                 ' City: ' + selected_package.city + ' Postal Code: ' + selected_package.zipcode + \
@@ -39,7 +40,7 @@ def all_package_search(package_table, selected_time):
     This function takes a hash table and a time as input, and iterates through all items in the hash table
     to display the attributes for every package in the table at the designated time.
 
-    Algorithmic Complexity: 0(n). Since n items are being searched through, the complexity is only 0(n). Would
+    Algorithmic Complexity: O(N). Since n items are being searched through, the complexity is only O(N). Would
     be higher in a situation where there were multiple elements associated with a single key.
     """
     for i in range(1, 41):
