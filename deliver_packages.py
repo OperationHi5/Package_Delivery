@@ -17,10 +17,6 @@ def deliver_packages():
 
     hub_address = "4001 South 700 East"
 
-    update_time(package_table, truck1_list, 480)
-    update_time(package_table, truck2_list, 480)
-    update_time(package_table, truck3_list, 480)
-
     truck1_list = delivery_algo(truck1_list)
 
     truck1 = Truck(1, 480, truck1_list)
@@ -32,7 +28,7 @@ def deliver_packages():
     print("------")
     print("Truck 1 leaves hub at", format_minutes(truck1.time))
 
-    update_transport_time(package_table, truck1_list, 480)
+    update_transport_time(package_table, truck1_list, 480, 'En Route')
 
     while truck1.package_list:
         package = package_table.get(truck1.package_list[0])
@@ -60,7 +56,7 @@ def deliver_packages():
     truck2.current_location = hub_address
 
     print("Truck 2 leaves hub at", format_minutes(truck2.time))
-    update_transport_time(package_table, truck2_list, truck2.time)
+    update_transport_time(package_table, truck2_list, truck2.time, 'En Route')
 
     while truck2.package_list:
         package = package_table.get(truck2.package_list[0])
@@ -86,7 +82,7 @@ def deliver_packages():
 
     print("Truck 3 leaves hub at", format_minutes(truck3.time))
 
-    update_transport_time(package_table, truck3_list, truck3.time)
+    update_transport_time(package_table, truck3_list, truck3.time, 'En Route')
 
     while truck3.package_list:
         package = package_table.get(truck3.package_list[0])
@@ -116,18 +112,20 @@ def deliver_packages():
     return package_table
 
 
-def update_time(hash_table, truck_list, hub_time):
+def update_time(hash_table, truck_list, hub_time, status):
     for package_id in truck_list:
         package = hash_table.get(package_id)
         package.hub_time = hub_time
+        package.status = status
         hash_table.set(package_id, package)
 
 
-def update_transport_time(hash_table, truck_list, transport_time):
+def update_transport_time(hash_table, truck_list, transport_time, status):
 
     for package_id in truck_list:
         package = hash_table.get(package_id)
         package.transport_time = transport_time
+        package.status = status
         hash_table.set(package_id, package)
 
 

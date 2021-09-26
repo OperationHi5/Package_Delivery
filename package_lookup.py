@@ -7,7 +7,7 @@ def package_lookup(selected_package, selected_time):
                 ' Delivery Deadline: ' + format_minutes(selected_package.deadline) + \
                 ' Weight: ' + selected_package.weight + ' Status: '
     if selected_package is not None:
-        if selected_time < selected_package.departure_time:
+        if selected_time < 480:
 
             statement1 = statement + 'At Hub'
 
