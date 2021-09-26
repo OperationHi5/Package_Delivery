@@ -11,9 +11,9 @@ def deliver_packages():
     package_table hash table, organizes the packages into the proper order, delivers the packages, and then returns
     the hash table so the data can be accessed after being ran
 
-    Algorithmic Complexity: O(n). Since each element is iterated over, it has the complexity of O(n). Could
-    be higher complexity if the hash table needed to be resized or if keys had more than one element associated
-    with them.
+    Algorithmic Complexity: O(N^2). The delivery of the packages is linear which gives a complexity of O(N), but
+    since each truck requires the delivery_algo to be ran, and delivery_algo has a complexity of O(N^2), it gives
+    deliver_packages a complexity of O(N^2).
     """
 
     # initializes a hash table with every package
