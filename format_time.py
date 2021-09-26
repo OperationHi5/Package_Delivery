@@ -6,12 +6,12 @@ def format_minutes(time):
         time_formatted = "%d:%02d" % (time_hours, time_minutes)
     else:
         am_pm = "PM"
-        time_formatted = "%d:%02d" % (time_hours - 12, time_minutes)
+        time_formatted = "%d:%02d" % (time_hours, time_minutes)
     return time_formatted + ' ' + am_pm
 
 
 def convert_to_minutes(time):
-    # print(time)
+    print(time)
     parsed = time.split(':')
     hours = parsed[0]
     parsed2 = parsed[1].split(' ')

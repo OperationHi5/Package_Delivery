@@ -36,25 +36,24 @@ class Main:
                         else:
                             print("Please Enter Time in the Correct Format (HH:MM AM)")
 
-        #
-        # elif input1 == '3':
-        #     status1 = 540
-        #     status2 = 600
-        #     status3 = 780
-        #     print('\n---------\n')
-        #     print('All Package Status at ' + format_minutes(status1) + '\n')
-        #     for i in range(1, 41):
-        #         print(package_lookup(hashtable.get(i), status1))
-        #
-        #     print('\n---------\n')
-        #     print('All Package Status at ' + format_minutes(status3) + '\n')
-        #     for i in range(1, 41):
-        #         print(package_lookup(hashtable.get(i), status2))
-        #
-        #     print('\n---------\n')
-        #     print('All Package Status at ' + format_minutes(status3) + '\n')
-        #     for i in range(1, 41):
-        #         print(package_lookup(hashtable.get(i), status3))
+        elif input1 == '3':
+            status1 = 540
+            status2 = 600
+            status3 = 780
+            print('\n---------\n')
+            print('All Package Status at ' + format_minutes(status1) + '\n')
+            for i in range(1, 41):
+                print(package_lookup(hashtable.get(i), status1))
+
+            print('\n---------\n')
+            print('All Package Status at ' + format_minutes(status3) + '\n')
+            for i in range(1, 41):
+                print(package_lookup(hashtable.get(i), status2))
+
+            print('\n---------\n')
+            print('All Package Status at ' + format_minutes(status3) + '\n')
+            for i in range(1, 41):
+                print(package_lookup(hashtable.get(i), status3))
 
         elif input1 == '4':
             print('Exiting Program, Goodbye!\n')
