@@ -214,12 +214,12 @@ def add_time(minutes_to_add, prev_time):
 def delivery_algo(package_list):
     """
     delivery_algo:
-    implements a nearest neighbor/greedy algorithm that starts at the hub and then moves to the next closest
+    implements a greedy algorithm that starts at the hub and then moves to the next closest
     address. It repeats that until every address has been visited, and then returns back to the hub address. It
     takes a list of packages as input to determine the order of delivery, then organizes the package list in
     to the appropriate order and returns a hash table.
 
-    Algorithmic Complexity: O(n^2). This nearest neighbor algorithm is polynomial in time. It has a loop
+    Algorithmic Complexity: O(n^2). This greedy algorithm is polynomial in time. It has a loop
     that iterates over every package id found in a list, and within that loop there is a for loop that iterates
     over every package id in the package list.
     """
