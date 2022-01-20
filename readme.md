@@ -1,3 +1,7 @@
+This program was created as a software development project for my Bachelor's Degree program using Python. It is essentially a solution to the classic "Traveling Salesman Problem."
+Taking a list of packages and their destinations, adding the packages to the truck and determing the best path to delivering the packages to their destinations while staying under 120 total miles and only using 2 trucks at a time.
+
+
 Option 1 using Pycharm IDE:
 1. Open the project folder in PyCharm
 2. Navigate to the main.py file in the project structure
